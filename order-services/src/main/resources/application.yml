@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    function:
+      definition: orderEventProducer;shippingProcessor
+    stream:
+      default:
+        producer:
+          useNativeEncoding: true
+      bindings:
+        order-events-channel:
+          destination: order-events
+        shippingProcessor-in-0:
+          destination: shipping-events
+          group: order-service-group
+      kafka:
+        binder:
+          consumer-properties:
+            "value.deserializer": org.springframework.kafka.support.serializer.JsonDeserializer
+            "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
+            "auto.offset.reset": "earliest"
+            "spring.json.trusted.packages": "me.sigom.common.events.*"
+          producer-properties:
+            "value.serializer": org.springframework.kafka.support.serializer.JsonSerializer
+            "key.serializer": org.apache.kafka.common.serialization.StringSerializer
+  r2dbc:
+    url: r2dbc:postgresql://postgres@localhost:5432/microservices
+    username: ${PG_USERNAME:postgres}
+    password: ${PG_PASSWORD:postgres}
