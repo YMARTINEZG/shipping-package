@@ -24,6 +24,7 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.5</spring-cloud.version>
 		<zookeeper.version>3.8.1</zookeeper.version>
+		<keycloak-adapter.version>16.1.1</keycloak-adapter.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -43,6 +44,13 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.keycloak.bom</groupId>
+				<artifactId>keycloak-adapter-bom</artifactId>
+				<version>${keycloak-adapter.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

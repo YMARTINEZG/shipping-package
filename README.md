@@ -8,7 +8,7 @@
 ## Kafka Reactive
 ## Docker
 ## Multi module project
-## CORS
+## Java 17
 ## Keycloak authentication
 
 ## in the root directory execute : docker-compose up -d
